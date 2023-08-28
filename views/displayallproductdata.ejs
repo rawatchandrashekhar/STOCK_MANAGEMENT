@@ -1,0 +1,122 @@
+<style type="text/css">
+    .root {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ecf0f1;
+        flex-direction: column;
+    }
+
+    .subdiv {
+        background-color: white;
+        height: auto;
+        width: 1000px;
+        padding: 15px;
+        border-radius: 13px;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<html>
+
+<body style="background-color: #ecf0f1;">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <div class="root">
+        <div class="center"
+            style="font-size: 30px; font-weight: bold; letter-spacing: 2px; margin: 25px 0px 10px 0px; color: darkcyan;">
+            <img src="/images/logo.png" width="45" style="margin-right: 10px;">
+            Product's Data List
+        </div>
+        <div class="subdiv">
+            <a href="/admin/addproduct">Add Product</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">S.No.</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Icon</th>
+                        <th scope="col">Update & Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% result.map((item,index)=>{ %>
+                        <tr>
+                            <th>
+                                <%= (index+1) %>
+                            </th>
+                            <td>
+                                <div style="font-size: 13px;"><b>I.D. :</b>
+                                    <%= item.productid %><br><b>Product Name :</b>
+                                        <%= item.productname %>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="font-size: 13px;">
+                                    <%= item.description %>
+                                </div>
+                            </td>
+                            <td><a class="modal-button" picture="<%=item.icon%>" name="<%=item.productname%>"
+                                    productid="<%=item.productid%>" data-target="#modal"><img
+                                        src='/images/<%=item.icon %>' style="width: 50px; border-radius: 10px;"></a>
+                            </td>
+                            <div id="modal" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-content"
+                                    style="border-radius: 10px; display: flex; align-items: center; justify-content: center; width: 500px; height: 400px;">
+                                    <!-- Any other Bulma elements you want -->
+                                    <form action="/admin/updateproducticon" method="POST" enctype="multipart/form-data">
+                                        <div><input id="pid" type="hidden" value="" name="pid"></div>
+                                        <div>
+                                            <h3 id="name" style="font-weight: bold; padding: 10px; font-size: 25px;">
+                                            </h3>
+                                        </div>
+                                        <div><img src="" id="imgmodel" width="200"></div>
+                                        <div style="padding: 10px;"><input type="file" name="newpicture"></div>
+                                        <div><input type="submit" value="Update" class="btn btn-primary"
+                                                style="background-color: darkcyan;"></div>
+                                    </form>
+                                </div>
+                                <button class="modal-close is-large" aria-label="close"></button>
+                            </div>
+                            <td><a href="/admin/updateproduct?pid=<%=item.productid %>">
+                                    <div style="font-size: 17px; display: flex; justify-content: center;"><i
+                                            class="fas fa-edit"></i></div>
+                                </a></td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(".modal-button").click(function () {
+            var img = "http://localhost:3000/images/" + $(this).attr("picture")
+            $("#imgmodel").attr("src", img)
+            $("#name").html($(this).attr("name"))
+            var val = $(this).attr("productid")
+            $("#pid").attr("value", val)
+            var target = $(this).data("target");
+            $("html").addClass("is-clipped");
+            $(target).addClass("is-active");
+        })
+
+        $(".modal-close").click(function () {
+            $("html").removeClass("is-clipped");
+            $(this).parent().removeClass("is-active");
+        })
+    </script>
+
+</body>
+
+</html>

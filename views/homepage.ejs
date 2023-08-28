@@ -1,0 +1,98 @@
+<style type="text/css">
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #rightdiv>img {
+        margin-right: 5vmax;
+        /* filter: drop-shadow(0 0 10px black); */
+    }
+
+    #leftdiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #leftdiv>span>p {
+        margin: 0px 9vmax 0px 9vmax;
+    }
+
+    .container{
+        min-height: calc(100vh - 7vh - 12vh);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .admin{
+      text-decoration: none;        
+    }
+
+    footer{
+        height: 12vh;
+        color: white;
+        background: black;
+    }
+</style>
+<html>
+<title>HomePage-Stock Management</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+       <body>
+        <header class="navbar sticky-top" style="background: rgba(255,255,255,0); box-shadow: 0 8px 6px -6px #999;">
+            <nav style="position: sticky; width: 100%; height: 7vh;">
+                <ul>
+                    <div class="center">
+                        <div class="center" style="width: 20%;"><a href="/stock/homepage"><img src="/images/logo.png" width="38" alt="logo"></a></div>
+                        <div class="center" style="width: 60%; font-size: 30px; font-weight: bold; letter-spacing: 2px; color: #0d6efd;">
+                            Stock Management
+                        </div>
+                        <div class="center" style="width: 20%;">
+                            <a href="/handleadmin/adminlogin" class="admin"><b>ADMIN</b></a>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div class="container" style="font-family: 'Poppins', sans-serif; max-width: 1400px;">
+                <div style="display: flex;">
+                    <div id="leftdiv" style="width: 100%;">
+                            <div style="display: flex; flex-direction: column; align-items: center; margin-left: 5vmax; font-family: 'Poppins', sans-serif;">
+                            <p><b>Welcome to this <font color="#0d6efd" size="5vmax"><i><u>stock management</u></i></font> website</b></p>
+                            <p>We provide product information, avalilability of product, how many stock's are available and you can explore many products details.</p>
+                            </div>
+                        <div style="display: flex;">
+                       <a href="/stock/productinformation"><input type="submit" value="Explore Now" class="btn btn-primary"></a>
+                      </div>
+                    </div>
+                    <div id="rightdiv" style="width: 100%; display: flex; justify-content: flex-end; margin-left: 50px;"><img
+                            src="/images/homeimage.png" width="650">
+                    </div>
+                </div>
+                </div>
+        </main>
+        <footer class="center" style="background: #ecf0f1;">
+            <div style=" font-family: 'Poppins', sans-serif;">
+            <div class="center" style="width: 100%;"><b><font color="black">Connect with us :</font></b></div>
+        <div class="center" style="width: 100%;">
+            <a href="https://www.facebook.com"><font color="#3b5998" size="3px"><i class="fab fa-facebook-f" style="padding-right: 13px;"></i></font></a>
+            <a href="https://www.instagram.com"><font color="#8a3ab9" size="3px"><i class="fab fa-instagram" style="padding-right: 13px;"></i></font></a>
+            <a href="https://www.twitter.com"><font color="blue" size="3px"><i class="fab fa-twitter" style="padding-right: 13px;"></i></font></a>
+            <a href="https://www.youtube.com"><font color="red" size="3px"><i class="fab fa-youtube"></i></font></a>
+        </div>
+            <div class="center" style="width: 100%; margin-top: 8px;">
+            <font size="2vmax" color="black">copyright &copy;2021 stockmanagement.com</font>
+            </div>
+            </div>
+        </footer>
+       </body>
+</html>

@@ -1,0 +1,80 @@
+<style type="text/css">
+    .root {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ecf0f1;
+        flex-direction: column;
+    }
+
+    .subdiv {
+        background-color: white;
+        height: auto;
+        width: 800px;
+        padding: 15px;
+        border-radius: 13px;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+<html>
+
+<body style="background-color: #ecf0f1;">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <div class="root">
+        <div class="center"
+            style="font-size: 30px; font-weight: bold; letter-spacing: 2px; margin: 25px 0px 10px 0px; color: darkcyan;">
+            <img src="/images/logo.png" width="45" style="margin-right: 10px;">
+            Stock's Data List
+        </div>
+        <div class="subdiv">
+            <a href="/admin/addstock">Add Stock</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">S.No.</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col" class="center">Update & Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% result.map((item,index)=>{ %>
+                        <tr>
+                            <th>
+                                <%= (index+1) %>
+                            </th>
+                            <td>
+                                <div style="font-size: 13px;"><b>I.D. :</b>
+                                    <%= item.stockid %><br><b>Stock :</b>
+                                        <%= item.stock %>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="font-size: 13px;">
+                                    <%= item.productname %>
+                                </div>
+                            </td>
+                            <td><a href="/admin/updatestock?sid=<%=item.stockid %>">
+                                    <div style="font-size: 17px; display: flex; justify-content: center;"><i
+                                            class="fas fa-edit"></i></div>
+                                </a></td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

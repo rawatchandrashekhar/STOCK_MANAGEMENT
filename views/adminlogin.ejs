@@ -1,0 +1,170 @@
+<style type="text/css">
+
+    .root{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+   
+    .subdiv{
+       width: 45%;
+       padding: 35px;
+       box-shadow: 5px 10px 18px #888888;
+       border-radius: 20px;
+    }
+   
+    .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+   
+    .idinputwithicon input[type=email]{
+        padding-left: 30px;
+    }
+   
+    .idinputwithicon{
+        position: relative;
+    }
+   
+    .idinputwithicon input[type=email]:focus + i{
+        color: lightblue;
+    }
+   
+    .idinputwithicon i{
+        position: absolute;
+        left: 0;
+        top: 33px;
+        padding: 9px 8px;
+        color: #636e72;
+        transition: .3s;
+    }
+   
+    .pwdinputwithicon input[type=password]{
+        padding-left: 30px;
+    }
+   
+    .pwdinputwithicon{
+        position: relative;
+    }
+   
+    .pwdinputwithicon input[type=password]:focus + i{
+        color: lightblue;
+    }
+   
+    .pwdinputwithicon i{
+        position: absolute;
+        left: 0;
+        top: 33px;
+        padding: 9px 8px;
+        color: #636e72;
+        transition: .3s;
+    }
+    .pwdinputwithicon input[type=text]{
+        padding-left: 30px;
+    }
+   
+    .pwdinputwithicon{
+        position: relative;
+    }
+   
+    .pwdinputwithicon input[type=text]:focus + i{
+        color: lightblue;
+    }
+   
+    .pwdinputwithicon i{
+        position: absolute;
+        left: 0;
+        top: 33px;
+        padding: 9px 8px;
+        color: #636e72;
+        transition: .3s;
+    }
+
+    .pwdinputwithicon input[type=text]{
+        padding-right: 35px;
+    }
+    .pwdinputwithicon input[type=password]{
+        padding-right: 35px;
+    }
+    .opencloseeye{
+        position: relative;
+    }
+    .opencloseeye img{
+        position: absolute;
+        right: 0;
+        bottom: 0px;
+        margin: 10px;
+    }
+
+    /* Responsive */
+    @media only screen and (max-width: 1336px){
+        .imglogo{
+            display: none;
+        }
+        .imglogo > img{
+            margin-right: 0;
+        }
+    }
+   
+   </style>
+   <html>
+       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+       <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+       <nav class="navbar sticky-top navbarcolor" style="background: rgba(255,255,255,0); position: sticky; box-shadow: 0 8px 6px -6px #999;">
+        <div class="center" style="width: 20%;"><a class="navbar-brand" href="/stock/homepage">
+            <img src="/images/logo.png" width="38" alt="logo">
+        </a></div>
+        <div class="center"
+            style="width: 60%; font-size: 30px; font-weight: bold; letter-spacing: 2px; color: #0d6efd;">Stock Management
+        </div>
+        <div style="width: 20%;">
+        </div>
+    </nav>
+       <div class="root" style="font-family: 'Poppins', sans-serif";>
+           <div class="subdiv center">
+               <div class="imgdiv">
+                   <img src="/images/logo.png" width="230" alt="logo" class="imglogo" style="margin-right: 3.5vmax;">
+               </div>
+               <form action="/handleadmin/dashboard" method="POST">
+                   <div class="center" style="flex-direction: column;">
+                       <i class="fas fa-user-lock" style="font-size: 30px; color: #f53b57; margin-bottom: 5px;"></i>
+                       <h4 style="font-style: normal; font-weight: 600;">Administrator Login</h4>
+                   </div>
+                   <div class="form-group idinputwithicon" style="margin-top: 10px;">
+                     <label>Admin ID*</label>
+                     <input required type="email" class="form-control" placeholder="Enter admin id" name="email">
+                     <i class="fas fa-portrait" aria-hidden="true"></i>
+                   </div>
+                   <div class="form-group pwdinputwithicon">
+                     <label>Password*</label>
+                     <input required id="pwd" type="password" class="form-control" placeholder="Enter password" name="pwd">
+                     <i class="fas fa-key" aria-hidden="true"></i>
+                     <div class="opencloseeye">
+                     <img src='/images/openeye.jpg' width="18" id="pwdimg" onclick="opencloseeye()" style="cursor: pointer;">
+                     </div>
+                     <script>
+                         function opencloseeye(){
+                         if(pwd.type=="password"){
+                             pwd.type="text"
+                             pwdimg.src="/images/closeeye.jpg"
+                         }else if(pwd.type=="text"){
+                            pwd.type="password"
+                             pwdimg.src="/images/openeye.jpg"
+                         }
+                        }
+                     </script>
+                   </div>
+                 <div style="display: flex; align-items: center; justify-content: center; padding-bottom: 5px;">
+                     <b style="color: crimson; font-size: 15px;"><%= message %></b>
+                 </div>
+                   <input type="submit" value="Login" class="btn btn-primary" style="width: 100%;">
+                 </form>
+           </div>
+       </div>
+   </html>
